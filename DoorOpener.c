@@ -1,13 +1,21 @@
 #include<lpc214x.h>
+
+
+//to read matrix keyboard
 #define COL0 (IO1PIN & 1U<<19)
 #define COL1 (IO1PIN & 1U<<18)
-#define COL2 (IO1PIN & 1U<<17)
+#define COL2 (IO1PIN & 1U<<17) 
 #define COL3 (IO1PIN & 1U<<16)
+
+//to read configuration pins
 #define SW2 (IOPIN0 & (1U << 14))
 #define SW6 (IOPIN1 & (1U << 20))
+#define SW5 (IO1PIN & (1 << 19))
+
 #define LED_ON (IO0CLR = 1U << 31)
 #define LED_OFF (IO0SET = 1U << 31)
-#define SW5 (IO1PIN & (1 << 19))
+
+//to produce software delay, depends on clock cycle
 void delay(unsigned int i)
 {
 	int j,x;
@@ -25,11 +33,13 @@ U0LCR=0X83;
 	U0FCR=0X07;
 }
 
+//to set the characters produced from matrix keyboard
 unsigned char Lookup_table[4][4]={{'0','1','2','3'},{'4','5','6','7'},{'8','9','A','B'},{'C','D','E','F'}};
 
 
 unsigned int rowsel=0,colsel=0;
 
+//to display chars in 7-seg display
 unsigned char alpha7(unsigned char alphachar)
 {
 switch(alphachar){
@@ -103,6 +113,7 @@ void alpha7segdisplay(char *buf, unsigned int k){
 
 }
 
+//to red keyboard input
 unsigned char Keyboard(){
   
 	
@@ -146,7 +157,7 @@ unsigned char Keyboard(){
 	
 
 }
-
+//to control stepper motor for door operation
 void DoorRotate(unsigned int c, unsigned int dir){
 	
 
@@ -173,7 +184,7 @@ void DoorRotate(unsigned int c, unsigned int dir){
 
 
 }
-
+//to read proximity sensor
 int readSensor(int sen_no)
 {
 	int result=0;
