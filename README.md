@@ -1,7 +1,7 @@
 # Intelligent-Door-System
 It is a standalone door system with security and customisation of settings, designed with ARM LPC2148 Micro controller and peripherals.
 
-It was our project for Productathon event held in CSE dept. for MCES (Microcontrollers and Embedded Systems) subject with 6hrs duration.
+It was our project for Productathon event held in CSE dept. of RVCE, 2023 for MCES (Microcontrollers and Embedded Systems) subject with 6hrs duration.
 
 Components involved:
 
